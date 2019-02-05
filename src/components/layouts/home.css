@@ -1,10 +1,108 @@
 .container {
     width: 100%;
     min-height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url(./img/cover.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url(./img/cover1.jpg);
     background-size: cover;
     background-position: 50% 50%;
     background-repeat: no-repeat;
     z-index: -10; 
-    top: 0
+}
+
+.cover-text {
+    color: white;
+    height: 100vh;
+    margin-left: 150px;
+    padding-top: -150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end
+}
+
+.text-container{
+    width: 100%;
+}
+
+.button-container{
+    margin-bottom: 70px;
+    margin-top: 60px
+}
+
+.text-container h4, h1, h3{
+    text-transform: uppercase 
+}
+
+.text1 {
+    color: #1595CA;
+    animation: text 4s;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.text2 {
+    margin: 20px 0px 10px 0px;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    animation: typewriter 3s steps(40) 1s 1 normal both;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.text3 {
+    font-size: 24px;
+    color: #1595CA;
+    animation: text 4s;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.btn-tables, .btn-emails{
+    color:white;
+    padding: 15px;
+    background-color: #1595CA;
+    margin-right: 10px;
+    border: none;
+    font-size: 16px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: 550;
+    animation: btn-move 2s 6s;
+}
+
+.btn-emails{
+    background-color: transparent;
+    border: 1px solid white
+}
+
+.btn-tables:hover, .btn-emails:hover{
+    background-color: #F49E4C;
+}
+
+@keyframes typewriter {
+    from{
+        width:0
+    }
+
+    to{
+        width: 100%
+        
+    }
+}
+
+@keyframes text {
+    from{
+        width: 0
+    }
+    to{
+        width: 100%
+    }
+}
+
+@keyframes btn-move{
+    from{
+        display: none
+    }
+    to{
+        display: inline-block
+    }
 }
