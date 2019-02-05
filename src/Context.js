@@ -18,7 +18,9 @@ export class Provider extends Component {
     }
 
     async componentDidMount () {
-        console.log(data[0])
+        this.setState({
+            tablesData: data
+        })
         
     }
 

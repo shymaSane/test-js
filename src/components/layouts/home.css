@@ -57,7 +57,6 @@
 }
 
 .btn-tables, .btn-emails{
-    color:white;
     padding: 15px;
     background-color: #1595CA;
     margin-right: 10px;
@@ -76,6 +75,11 @@
 
 .btn-tables:hover, .btn-emails:hover{
     background-color: #F49E4C;
+}
+
+.nav-link{
+    text-decoration: none;
+    color: white
 }
 
 @keyframes typewriter {

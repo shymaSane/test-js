@@ -1,5 +1,7 @@
-import React from 'react'
-import './Home.css'
+import React from 'react';
+import './Home.css';
+import {Link} from 'react-router-dom';
+
 
 function Home() {
 
@@ -12,8 +14,8 @@ function Home() {
             <h3 className="text3">Start with us</h3>
         </div>
         <div className="button-container">
-            <button className="btn-tables">Show Tables</button>
-            <button className="btn-emails">Emails Data </button>
+            <button className="btn-tables"><Link to='/api/tables' className="nav-link">Show Tables</Link></button>
+            <button className="btn-emails"><Link to='/api/emails' className="nav-link">Emails Data</Link> </button>
         </div>
       </div>
     </div>
