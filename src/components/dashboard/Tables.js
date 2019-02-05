@@ -12,7 +12,8 @@ class Tables extends Component {
                 const columns = [{
                     Header:'Address',
                     accessor: 'address',
-                    sortable: false
+                    sortable: false,
+                    filterable: false
                     }, {
                     Header:'City',
                     accessor: 'city',
@@ -20,11 +21,13 @@ class Tables extends Component {
                     }, {
                     Header:'Company',
                     accessor: 'company_name',
-                    sortable: false
+                    sortable: false,
+                    filterable: false
                     }, {
                     Header:'Email',
                     accessor: 'email',
-                    sortable: false  
+                    sortable: false,
+                    filterable: false  
                     }, {
                     Header:'First Name',
                     accessor: 'first_name'
@@ -34,22 +37,26 @@ class Tables extends Component {
                     }, {
                     Header:'Phone1',
                     accessor: 'phone1',
-                    sortable: false 
+                    sortable: false,
+                    filterable: false
                     }, {
                     Header:'Phone2',
                     accessor: 'phone2',
-                    sortable: false
+                    sortable: false,
+                    filterable: false
                     }, {
                     Header:'Postal',
                     accessor: 'postal',
-                    sortable: false 
+                    sortable: false,
+                    filterable: false 
                     }, {
                     Header:'Province',
                     accessor: 'province'
                     }, {
                     Header:'Website',
                     accessor: 'web' ,
-                    sortable: false
+                    sortable: false,
+                    filterable: false
                     }
                 ]
                 return(
