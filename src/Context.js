@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import data from './model/data.json'
 
 
 const Context = React.createContext({})
@@ -18,7 +18,7 @@ export class Provider extends Component {
     }
 
     async componentDidMount () {
-        
+        console.log(data[0])
         
     }
 
