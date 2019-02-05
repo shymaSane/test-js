@@ -56,6 +56,7 @@ class Tables extends Component {
                    <ReactTable
                     data={tablesData}
                     columns={columns}
+                    filterable
                    >
 
                    </ReactTable>
