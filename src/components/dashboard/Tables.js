@@ -11,16 +11,20 @@ class Tables extends Component {
                 const {tablesData} = value;
                 const columns = [{
                     Header:'Address',
-                    accessor: 'address'
+                    accessor: 'address',
+                    sortable: false
                     }, {
                     Header:'City',
-                    accessor: 'city'  
+                    accessor: 'city',
+                    sortable: false 
                     }, {
                     Header:'Company',
-                    accessor: 'company_name'
+                    accessor: 'company_name',
+                    sortable: false
                     }, {
                     Header:'Email',
-                    accessor: 'email'  
+                    accessor: 'email',
+                    sortable: false  
                     }, {
                     Header:'First Name',
                     accessor: 'first_name'
@@ -29,19 +33,23 @@ class Tables extends Component {
                     accessor: 'last_name'  
                     }, {
                     Header:'Phone1',
-                    accessor: 'phone1'  
+                    accessor: 'phone1',
+                    sortable: false 
                     }, {
                     Header:'Phone2',
-                    accessor: 'phone2'
+                    accessor: 'phone2',
+                    sortable: false
                     }, {
                     Header:'Postal',
-                    accessor: 'postal'  
+                    accessor: 'postal',
+                    sortable: false 
                     }, {
                     Header:'Province',
                     accessor: 'province'
                     }, {
                     Header:'Website',
-                    accessor: 'web'  
+                    accessor: 'web' ,
+                    sortable: false
                     }
                 ]
                 return(
