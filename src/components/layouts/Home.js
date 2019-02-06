@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Home.css';
 import {Link} from 'react-router-dom';
+import {Consumer} from '../../Context'
 
 class Home extends Component {
 
@@ -25,7 +26,7 @@ class Home extends Component {
     this.setState({[e.target.name]: e.target.value})
   }
 
-  onSubmitData = (e) =>{
+  onSubmitData = (dispatch, e) =>{
     e.preventDefault();
     const{emails, province} = this.state;
     let errorMsg = document.getElementById('errors');
@@ -35,69 +36,76 @@ class Home extends Component {
       title.style.marginBottom = '20px'
     } else {
       errorMsg.style.display = 'none'
+      title.style.marginBottom = '30px'
     }
     console.log(this.state)
   }
 
   render(){
-    return (
-      <div className="container">
-        <div className="cover-text">
-          <div className="text-container">
-              <h4 className="text1">Inspire your data</h4>
-              <h1 className="text2"><span>W</span>elcome <span>t</span>o <span>S</span>howTables</h1>
-              <h3 className="text3">Start with us</h3>
+    return(
+    <Consumer>
+      {value =>{
+        const {dispatch} = value
+        return(
+          <div className="container">
+            <div className="cover-text">
+              <div className="text-container">
+                  <h4 className="text1">Inspire your data</h4>
+                  <h1 className="text2"><span>W</span>elcome <span>t</span>o <span>S</span>howTables</h1>
+                  <h3 className="text3">Start with us</h3>
+              </div>
+              <div className="button-container">
+                  <button className="btn-tables" onClick={this.showModal}>Show Tables</button>
+                  <button className="btn-emails"><Link to='/api/emails' className="nav-link">Emails Data</Link> </button>
+              </div>
+            </div>
+            <div id="tables-modal" className="modal">
+              <div className="modal-content">
+                
+                <h2 className="modal-title" id="title">Select columns order <span className="close" onClick={this.closeModal}>&times;</span></h2>
+                
+                <form onSubmit = {this.onSubmitData.bind(this, dispatch)}>
+                <p className="error-msg" id="errors">Please select different columns!</p>
+                  <label className="columns-label">
+                  Emails column:
+                    <select className="select-box" name ="emails" value={this.state.emails} onChange={this.handleChange}>
+                      <option value="1" > 1 </option>
+                      <option value="2"> 2 </option>
+                      <option value="3"> 3 </option>
+                      <option value="4"> 4 </option>
+                      <option value="5"> 5 </option>
+                      <option value="6"> 6 </option>
+                      <option value="7"> 7 </option>
+                      <option value="8"> 8 </option>
+                      <option value="9"> 9 </option>
+                      <option value="10"> 10 </option>
+                      <option value="11"> 11 </option>
+                    </select>
+                  </label>
+                  <label className="columns-label">
+                  Province column:
+                    <select className="select-box" name ="province" value={this.state.province} onChange={this.handleChange}>
+                      <option value="1"> 1 </option>
+                      <option value="2" > 2 </option>
+                      <option value="3"> 3 </option>
+                      <option value="4"> 4 </option>
+                      <option value="5"> 5 </option>
+                      <option value="6"> 6 </option>
+                      <option value="7"> 7 </option>
+                      <option value="8"> 8 </option>
+                      <option value="9"> 9 </option>
+                      <option value="10"> 10 </option>
+                      <option value="11"> 11 </option>
+                    </select>
+                  </label>
+                  <div className="button-warrper"><input type="submit" value="OK" className="ok-button" /></div>
+                </form>
+              </div>
+            </div>
           </div>
-          <div className="button-container">
-              <button className="btn-tables" onClick={this.showModal}>Show Tables</button>
-              <button className="btn-emails"><Link to='/api/emails' className="nav-link">Emails Data</Link> </button>
-          </div>
-        </div>
-        <div id="tables-modal" className="modal">
-          <div className="modal-content">
-            
-            <h2 className="modal-title" id="title">Select columns order <span className="close" onClick={this.closeModal}>&times;</span></h2>
-            
-            <form onSubmit = {this.onSubmitData}>
-            <p className="error-msg" id="errors">Please select different columns!</p>
-              <label className="columns-label" onSubmit={this.handleSubmit}>
-              Emails column:
-                <select className="select-box" name ="emails" value={this.state.emails} onChange={this.handleChange}>
-                  <option value="1" > 1 </option>
-                  <option value="2"> 2 </option>
-                  <option value="3"> 3 </option>
-                  <option value="4"> 4 </option>
-                  <option value="5"> 5 </option>
-                  <option value="6"> 6 </option>
-                  <option value="7"> 7 </option>
-                  <option value="8"> 8 </option>
-                  <option value="9"> 9 </option>
-                  <option value="10"> 10 </option>
-                  <option value="11"> 11 </option>
-                </select>
-              </label>
-              <label onSubmit={this.handleSubmit} className="columns-label">
-              Province column:
-                <select className="select-box" name ="province" value={this.state.province} onChange={this.handleChange}>
-                  <option value="1"> 1 </option>
-                  <option value="2" > 2 </option>
-                  <option value="3"> 3 </option>
-                  <option value="4"> 4 </option>
-                  <option value="5"> 5 </option>
-                  <option value="6"> 6 </option>
-                  <option value="7"> 7 </option>
-                  <option value="8"> 8 </option>
-                  <option value="9"> 9 </option>
-                  <option value="10"> 10 </option>
-                  <option value="11"> 11 </option>
-                </select>
-              </label>
-              <div className="button-warrper"><input type="submit" value="OK" className="ok-button" /></div>
-            </form>
-          </div>
-        </div>
-      </div>
-
+        )
+      }}
+    </Consumer>
     )
   }
   
