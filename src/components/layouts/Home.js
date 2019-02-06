@@ -34,11 +34,39 @@ class Home extends Component {
     if(emails === province){
       errorMsg.style.display = 'block'
       title.style.marginBottom = '20px'
+    } else if(emails > province){
+      let columns = [
+        {
+        Header:'Province',
+        accessor: 'province',
+        },
+        {
+        Header:'Email',
+        accessor: 'email',
+        sortable: false,
+        filterable: false  
+        }
+    ]
+
+    dispatch({type: "UPDATE_TABLES", payload: columns})
+    this.props.history.push('/api/tables');
     } else {
-      errorMsg.style.display = 'none'
-      title.style.marginBottom = '30px'
+      let columns = [
+        {
+          Header:'Email',
+          accessor: 'email',
+          sortable: false,
+          filterable: false  
+           },
+          {
+          Header:'Province',
+          accessor: 'province',
+          }
+    ]
+
+    dispatch({type: "UPDATE_TABLES", payload: columns})
+    this.props.history.push('/api/tables');
     }
-    console.log(this.state)
   }
 
   render(){

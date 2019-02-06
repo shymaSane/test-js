@@ -4,6 +4,7 @@ import ReactTable from 'react-table';
 import 'react-table/react-table.css'
 
 class Tables extends Component {
+    
   render() {
     return (
         <Consumer>
@@ -11,9 +12,9 @@ class Tables extends Component {
             {value => {
                 const {tablesData} = value;
                 const {columns} = value
+                console.log(columns)
                 return(
                     <div>
-                        <div>hello</div>
                         <ReactTable
                             data={tablesData}
                             columns={columns}
