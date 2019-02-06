@@ -5,8 +5,8 @@ import {Link} from 'react-router-dom';
 class Home extends Component {
 
   state={
-    emails: "",
-    province:""
+    emails: "1",
+    province:"2"
   }
 
   showModal = () =>{
@@ -16,11 +16,27 @@ class Home extends Component {
 
   closeModal = () =>{
     let modal = document.getElementById('tables-modal')
+    let errorMsg = document.getElementById('errors')
     modal.style.display = "none";
+    errorMsg.style.display = 'none';
   }
 
   handleChange = (e) => {
     this.setState({[e.target.name]: e.target.value})
+  }
+
+  onSubmitData = (e) =>{
+    e.preventDefault();
+    const{emails, province} = this.state;
+    let errorMsg = document.getElementById('errors');
+    let title = document.getElementById('title')
+    if(emails === province){
+      errorMsg.style.display = 'block'
+      title.style.marginBottom = '20px'
+    } else {
+      errorMsg.style.display = 'none'
+    }
+    console.log(this.state)
   }
 
   render(){
@@ -39,13 +55,15 @@ class Home extends Component {
         </div>
         <div id="tables-modal" className="modal">
           <div className="modal-content">
-            <h2 className="modal-title">Select columns order <span class="close" onClick={this.closeModal}>&times;</span></h2>
             
-            <form>
+            <h2 className="modal-title" id="title">Select columns order <span className="close" onClick={this.closeModal}>&times;</span></h2>
+            
+            <form onSubmit = {this.onSubmitData}>
+            <p className="error-msg" id="errors">Please select different columns!</p>
               <label className="columns-label" onSubmit={this.handleSubmit}>
               Emails column:
-                <select className="select-box" name ="emails" value={this.state.value} onChange={this.handleChange}>
-                  <option value="1"> 1 </option>
+                <select className="select-box" name ="emails" value={this.state.emails} onChange={this.handleChange}>
+                  <option value="1" > 1 </option>
                   <option value="2"> 2 </option>
                   <option value="3"> 3 </option>
                   <option value="4"> 4 </option>
@@ -60,9 +78,9 @@ class Home extends Component {
               </label>
               <label onSubmit={this.handleSubmit} className="columns-label">
               Province column:
-                <select className="select-box" name ="province" value={this.state.value} onChange={this.handleChange}>
+                <select className="select-box" name ="province" value={this.state.province} onChange={this.handleChange}>
                   <option value="1"> 1 </option>
-                  <option value="2"> 2 </option>
+                  <option value="2" > 2 </option>
                   <option value="3"> 3 </option>
                   <option value="4"> 4 </option>
                   <option value="5"> 5 </option>

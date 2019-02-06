@@ -142,7 +142,7 @@
 
 .modal-title{
     text-align: center;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-bottom: 30px;
     font-size: 28px;
     padding-bottom: 10px;
@@ -196,4 +196,13 @@
 .ok-button:hover{
     background-color: #F49E4C;
 
+}
+
+/* error message */
+
+.error-msg{
+    display: none;
+    color: #F49E4C;
+    font-size: 20px;
+    margin: 5px;
 }
