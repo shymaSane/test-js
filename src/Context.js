@@ -20,24 +20,13 @@ const reducer = (state, action) =>{
 export class Provider extends Component {
     state = {
         tablesData: [],
-        columns: [
-            {
-            Header:'Email',
-            accessor: 'email',
-            sortable: false,
-            filterable: false  
-             },
-            {
-            Header:'Province',
-            accessor: 'province',
-            }
-        ],
+        columns:JSON.parse(localStorage.getItem('columns')),
         dispatch: action => this.setState(state => reducer(state, action))
     }
 
-    async componentDidMount () {
+    componentDidMount () {
         this.setState({
-            tablesData: data
+            tablesData: data,
         })
         
     }

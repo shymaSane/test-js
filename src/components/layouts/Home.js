@@ -48,8 +48,12 @@ class Home extends Component {
         }
     ]
 
+    localStorage.setItem('columns', JSON.stringify(columns));
+
     dispatch({type: "UPDATE_TABLES", payload: columns})
+
     this.props.history.push('/api/tables');
+
     } else {
       let columns = [
         {
@@ -64,13 +68,17 @@ class Home extends Component {
           }
     ]
 
+    localStorage.setItem('columns', JSON.stringify(columns));
+
     dispatch({type: "UPDATE_TABLES", payload: columns})
+
     this.props.history.push('/api/tables');
     }
   }
 
   render(){
     return(
+
     <Consumer>
       {value =>{
         const {dispatch} = value
@@ -99,15 +107,6 @@ class Home extends Component {
                     <select className="select-box" name ="emails" value={this.state.emails} onChange={this.handleChange}>
                       <option value="1" > 1 </option>
                       <option value="2"> 2 </option>
-                      <option value="3"> 3 </option>
-                      <option value="4"> 4 </option>
-                      <option value="5"> 5 </option>
-                      <option value="6"> 6 </option>
-                      <option value="7"> 7 </option>
-                      <option value="8"> 8 </option>
-                      <option value="9"> 9 </option>
-                      <option value="10"> 10 </option>
-                      <option value="11"> 11 </option>
                     </select>
                   </label>
                   <label className="columns-label">
@@ -115,15 +114,6 @@ class Home extends Component {
                     <select className="select-box" name ="province" value={this.state.province} onChange={this.handleChange}>
                       <option value="1"> 1 </option>
                       <option value="2" > 2 </option>
-                      <option value="3"> 3 </option>
-                      <option value="4"> 4 </option>
-                      <option value="5"> 5 </option>
-                      <option value="6"> 6 </option>
-                      <option value="7"> 7 </option>
-                      <option value="8"> 8 </option>
-                      <option value="9"> 9 </option>
-                      <option value="10"> 10 </option>
-                      <option value="11"> 11 </option>
                     </select>
                   </label>
                   <div className="button-warrper"><input type="submit" value="OK" className="ok-button" /></div>
