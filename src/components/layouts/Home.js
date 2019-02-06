@@ -43,8 +43,6 @@ class Home extends Component {
         {
         Header:'Email',
         accessor: 'email',
-        sortable: false,
-        filterable: false  
         }
     ]
 
@@ -59,8 +57,6 @@ class Home extends Component {
         {
           Header:'Email',
           accessor: 'email',
-          sortable: false,
-          filterable: false  
            },
           {
           Header:'Province',
