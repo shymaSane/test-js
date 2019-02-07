@@ -5,15 +5,13 @@ import 'react-table/react-table.css';
 import matchSorter from 'match-sorter'
 
 class Tables extends Component {
-    
+    customOptionsFilter
   render() {
     return (
         <Consumer>
-            
             {value => {
                 const {tablesData} = value;
                 const {columns} = value
-                const filterEmail = ['Gmail', 'Yahoo', 'AOL', 'other']
                 return(
                     <div>
                         <ReactTable
@@ -21,30 +19,7 @@ class Tables extends Component {
                             defaultFilterMethod = {
                                 (filter, row) => String(row[filter.id] === filter.value)
                             }
-                            columns={[
-                                {
-                                  Header:'Email',
-                                  accessor: 'email',
-                                  filterMethod: (filter, rows) =>{
-                                    let newFilter = new RegExp('.+?('+ filter.value +').+', 'g')
-                                    console.log(rows)
-                                    return matchSorter(rows, filter.value, { keys: ["email"] })
-                                  }
-                                    ,
-                                    filterAll: true
-                                  },
-                                  {
-                                  Header:'Province',
-                                  accessor: 'province',
-                                  filterMethod: (filter, rows) =>
-                                    matchSorter(rows, filter.value, { keys: ["province"] }),
-                                    filterAll: true
-                                  },
-                                  {
-                                      Header:"Email Service",
-
-                                  }
-                            ]}
+                            columns={columns}
                             filterable
                             defaultPageSize={15}
                         >

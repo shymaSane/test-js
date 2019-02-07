@@ -7,7 +7,6 @@ const Context = React.createContext({})
 const reducer = (state, action) =>{
     switch(action.type){
         case 'UPDATE_TABLES':
-            console.log(action.payload)
             return {
                 ...state,
                 columns: action.payload
@@ -23,7 +22,9 @@ export class Provider extends Component {
         columns:JSON.parse(localStorage.getItem('columns')),
         dispatch: action => this.setState(state => reducer(state, action))
     }
-
+    updateData = (data) =>{
+        console.log(data)
+    }
     componentDidMount () {
         this.setState({
             tablesData: data,

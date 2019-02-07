@@ -61,6 +61,16 @@ class Home extends Component {
           {
           Header:'Province',
           accessor: 'province',
+          },{
+            Header: 'EMail Service',
+            accessor: 'email',
+            Cell: v => {
+              let value = v.value
+              let index1 = value.indexOf('@')+1
+              let index2 = value.indexOf('.', index1)
+              let cell = value.substring(index1, index2)
+              return cell
+            },
           }
     ]
 
