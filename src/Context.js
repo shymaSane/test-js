@@ -22,13 +22,27 @@ export class Provider extends Component {
         columns:JSON.parse(localStorage.getItem('columns')),
         dispatch: action => this.setState(state => reducer(state, action))
     }
-    updateData = (data) =>{
-        console.log(data)
-    }
-    componentDidMount () {
-        this.setState({
-            tablesData: data,
+
+    makeData = () => {
+
+        return data.map((row) => {
+            let value = row.email
+            let index1 = value.indexOf('@')+1
+            let index2 = value.indexOf('.', index1)
+            let cell = value.substring(index1, index2)
+            row['service'] = cell
+            return row
         })
+    }
+
+    componentDidMount () {
+        let data = this.makeData()
+        if(data !== undefined){
+            this.setState({
+                tablesData: data,
+            })
+        }
+        
         
     }
 

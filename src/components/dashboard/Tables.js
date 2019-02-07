@@ -22,8 +22,9 @@ class Tables extends Component {
                             columns={columns}
                             filterable
                             defaultPageSize={15}
+                            // pivotBy={['service']}
                         >
-
+                           
                         </ReactTable>
                    </div>
                 )

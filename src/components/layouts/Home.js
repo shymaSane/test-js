@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './Home.css';
 import {Link} from 'react-router-dom';
-import {Consumer} from '../../Context'
+import {Consumer} from '../../Context';
+import matchSorter from 'match-sorter'
 
 class Home extends Component {
 
@@ -57,20 +58,21 @@ class Home extends Component {
         {
           Header:'Email',
           accessor: 'email',
+          filterable: false
            },
           {
           Header:'Province',
           accessor: 'province',
+          filterMethod: (filter, rows) =>
+                    matchSorter(rows, filter.value, { keys: ["province"] }),
+                  filterAll: true
           },{
             Header: 'EMail Service',
-            accessor: 'email',
-            Cell: v => {
-              let value = v.value
-              let index1 = value.indexOf('@')+1
-              let index2 = value.indexOf('.', index1)
-              let cell = value.substring(index1, index2)
-              return cell
-            },
+            id:'service',
+            accessor: 'service',
+            filterMethod: (filter, rows) =>
+                    matchSorter(rows, filter.value, { keys: ["service"] }),
+                  filterAll: true
           }
     ]
 
