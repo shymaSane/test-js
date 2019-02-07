@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import {Consumer} from '../../Context';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
-import matchSorter from 'match-sorter'
+
 
 class Tables extends Component {
-    customOptionsFilter
+    
   render() {
     return (
         <Consumer>
             {value => {
+                console.log(JSON.parse(localStorage.getItem('columns')))
                 const {tablesData} = value;
                 const {columns} = value
                 return(
@@ -22,7 +23,7 @@ class Tables extends Component {
                             columns={columns}
                             filterable
                             defaultPageSize={15}
-                            // pivotBy={['service']}
+                            className="-striped -highlight"
                         >
                            
                         </ReactTable>

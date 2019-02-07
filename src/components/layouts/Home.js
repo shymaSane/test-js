@@ -8,7 +8,7 @@ class Home extends Component {
 
   state={
     emails: "1",
-    province:"2"
+    province:"2",
   }
 
   showModal = () =>{
@@ -28,59 +28,25 @@ class Home extends Component {
   }
 
   onSubmitData = (dispatch, e) =>{
+
     e.preventDefault();
+
     const{emails, province} = this.state;
+
     let errorMsg = document.getElementById('errors');
     let title = document.getElementById('title')
+
     if(emails === province){
       errorMsg.style.display = 'block'
       title.style.marginBottom = '20px'
     } else if(emails > province){
-      let columns = [
-        {
-        Header:'Province',
-        accessor: 'province',
-        },
-        {
-        Header:'Email',
-        accessor: 'email',
-        }
-    ]
-
-    localStorage.setItem('columns', JSON.stringify(columns));
-
-    dispatch({type: "UPDATE_TABLES", payload: columns})
-
-    this.props.history.push('/api/tables');
-
-    } else {
-      let columns = [
-        {
-          Header:'Email',
-          accessor: 'email',
-          filterable: false
-           },
-          {
-          Header:'Province',
-          accessor: 'province',
-          filterMethod: (filter, rows) =>
-                    matchSorter(rows, filter.value, { keys: ["province"] }),
-                  filterAll: true
-          },{
-            Header: 'EMail Service',
-            id:'service',
-            accessor: 'service',
-            filterMethod: (filter, rows) =>
-                    matchSorter(rows, filter.value, { keys: ["service"] }),
-                  filterAll: true
-          }
-    ]
-
-    localStorage.setItem('columns', JSON.stringify(columns));
-
-    dispatch({type: "UPDATE_TABLES", payload: columns})
-
-    this.props.history.push('/api/tables');
+      dispatch({type: "UPDATE_TABLES", payload: this.state});
+      localStorage.setItem('columns', JSON.stringify(this.state));
+      this.props.history.push('/api/tables');
+    }
+    else if (emails < province){
+      localStorage.clear()
+      this.props.history.push('/api/tables');
     }
   }
 
