@@ -30,9 +30,7 @@ class Home extends Component {
   onSubmitData = (dispatch, e) =>{
 
     e.preventDefault();
-
     const{emails, province} = this.state;
-
     let errorMsg = document.getElementById('errors');
     let title = document.getElementById('title')
 
@@ -40,19 +38,17 @@ class Home extends Component {
       errorMsg.style.display = 'block'
       title.style.marginBottom = '20px'
     } else if(emails > province){
-      dispatch({type: "UPDATE_TABLES", payload: this.state});
-      localStorage.setItem('columns', JSON.stringify(this.state));
-      this.props.history.push('/api/tables');
+      
+      dispatch({type: "UPDATE_TABLES"});
+      this.props.history.push('/api/emailtables');
     }
     else if (emails < province){
-      localStorage.clear()
-      this.props.history.push('/api/tables');
+      this.props.history.push('/api/emailtables');
     }
   }
 
   render(){
     return(
-
     <Consumer>
       {value =>{
         const {dispatch} = value
@@ -65,8 +61,8 @@ class Home extends Component {
                   <h3 className="text3">Start with us</h3>
               </div>
               <div className="button-container">
-                  <button className="btn-tables" onClick={this.showModal}>Show Tables</button>
-                  <button className="btn-emails"><Link to='/api/emails' className="nav-link">Emails Data</Link> </button>
+                  <button className="btn-tables" onClick={this.showModal}>Show Emails</button>
+                  <button className="btn-emails"><Link to='/api/alltables' className="nav-link">All Data</Link> </button>
               </div>
             </div>
             <div id="tables-modal" className="modal">

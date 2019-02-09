@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Provider} from './Context';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Home from './components/layouts/Home';
+import EmailTables from './components/dashboard/EmailTables';
 import Tables from './components/dashboard/Tables'
 
 
@@ -13,7 +14,8 @@ class App extends Component {
           <Router>
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route exact path="/api/tables" component={Tables} />
+              <Route exact path="/api/emailtables" component={EmailTables} />
+              <Route exact path="/api/alltables" component={Tables} />
             </Switch>
           </Router>
         </div>
