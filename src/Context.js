@@ -10,16 +10,10 @@ const reducer = (state, action) =>{
         case 'UPDATE_TABLES':
             return {
                 ...state,
-                columns: [...state.columns] = [state.columns[0], state.columns[2], state.columns[1], state.columns[3]]
+                // columns: [...state.columns] = [state.columns[0], state.columns[2], state.columns[1], state.columns[3]]
+                reorder:action.payload
             }
-        case 'REORDER_STATE':
-            localStorage.clear()
-            return{
-                ...state,
-                
-            }
-          
-           
+     
         default: 
             return state;    
     }
@@ -29,6 +23,7 @@ export class Provider extends Component {
     
     state = {
         tablesData: [],
+        reorder: '',
         columns: [
             {
             Header: "",
@@ -59,6 +54,37 @@ export class Provider extends Component {
             filterAll: true,
             }
         ],
+        columns1: [
+            {
+            Header: "",
+            id: "row",
+            maxWidth: 50,
+            filterable: false,
+            Cell: (row) => {
+                return <div>{row.viewIndex+1}</div>;
+            }
+            }, 
+            {
+            Header:'Province',
+            accessor: 'province',
+            filterMethod: (filter, rows) =>
+                    matchSorter(rows, filter.value, { keys: ["province"] }),
+            filterAll: true,
+            
+            },
+            {
+            Header:'Email',
+            accessor: 'email',
+            filterable: false
+            },
+            {
+            Header: 'EMail Service',
+            accessor: 'service',
+            filterMethod: (filter, rows) =>
+                    matchSorter(rows, filter.value, {threshold: matchSorter.rankings.EQUAL, keys: ["service"] }),
+            filterAll: true,
+            }
+        ], 
         Allcolumns:[{
             Header:'Address',
             accessor: 'address',
@@ -140,9 +166,14 @@ export class Provider extends Component {
 
     componentDidMount () {
         let data = this.makeData()
-        this.setState({
-            tablesData:data
-        })
+        let order = JSON.parse(localStorage.getItem('order')) 
+        if(data !== undefined){
+            this.setState({
+                tablesData:data,
+                reorder: order.reorder
+            })
+        }
+        
         
         
     }

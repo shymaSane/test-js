@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Home.css';
 import {Link} from 'react-router-dom';
 import {Consumer} from '../../Context';
-import matchSorter from 'match-sorter'
+
 
 class Home extends Component {
 
@@ -39,10 +39,13 @@ class Home extends Component {
       title.style.marginBottom = '20px'
     } else if(emails > province){
       
-      dispatch({type: "UPDATE_TABLES"});
+      dispatch({type: "UPDATE_TABLES", payload: true});
+      localStorage.setItem('order', JSON.stringify({reorder:true}))
       this.props.history.push('/api/emailtables');
     }
     else if (emails < province){
+      dispatch({type: "UPDATE_TABLES", payload: false});
+      localStorage.setItem('order', JSON.stringify({reorder:false}))
       this.props.history.push('/api/emailtables');
     }
   }

@@ -2,6 +2,8 @@
 import React, { Component } from 'react';
 import {Consumer} from '../../Context';
 import ReactTable from 'react-table';
+import {Link} from 'react-router-dom'
+import './table.css'
 
 export default class Table extends Component {
   render() {
@@ -10,10 +12,12 @@ export default class Table extends Component {
       <div>
         <Consumer>
             {value => {
-                const {tablesData} = value;
+                const {tablesData, reorder, columns, columns1} = value;
                 return(
+                    
                     <div>
-                        <ReactTable
+                        <Link to="/api">Back to Home Page</Link>
+                        {reorder === false? <ReactTable
                             data={tablesData}
                             defaultFilterMethod = {
                                 (filter, row) => String(row[filter.id] === filter.value)
@@ -21,10 +25,22 @@ export default class Table extends Component {
                             columns={columns}
                             filterable
                             defaultPageSize={15}
-                            className="-striped -highlight"
+                            className="-striped -highlight tables"   
                         >
-                           
-                        </ReactTable>
+                        </ReactTable>:
+                        <ReactTable
+                        data={tablesData}
+                        defaultFilterMethod = {
+                            (filter, row) => String(row[filter.id] === filter.value)
+                        }
+                        columns={columns1}
+                        filterable
+                        defaultPageSize={15}
+                        className="-striped -highlight tables"   
+                    >
+                    </ReactTable>
+                    }
+                        
                    </div>
                 )
             }}
