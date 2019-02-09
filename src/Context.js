@@ -67,7 +67,10 @@ export class Provider extends Component {
             }, {
             Header:'City',
             accessor: 'city',
-            sortable: false 
+            sortable: false,
+            filterMethod: (filter, rows) =>
+                    matchSorter(rows, filter.value, { keys: ["city"] }),
+            filterAll: true,
             }, {
             Header:'Company',
             accessor: 'company_name',
@@ -80,10 +83,16 @@ export class Provider extends Component {
             filterable: false  
             }, {
             Header:'First Name',
-            accessor: 'first_name'
+            accessor: 'first_name',
+            filterMethod: (filter, rows) =>
+                    matchSorter(rows, filter.value, { keys: ["first_name"] }),
+            filterAll: true,
             }, {
             Header:'Last Name',
-            accessor: 'last_name'  
+            accessor: 'last_name',
+            filterMethod: (filter, rows) =>
+                    matchSorter(rows, filter.value, { keys: ["last_name"] }),
+            filterAll: true,  
             }, {
             Header:'Phone1',
             accessor: 'phone1',
