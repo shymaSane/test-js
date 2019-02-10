@@ -23,7 +23,7 @@ export class Provider extends Component {
     
     state = {
         tablesData: [],
-        reorder: '',
+        reorder: false,
         columns: [
             {
             Header: "",
@@ -169,7 +169,12 @@ export class Provider extends Component {
         let data = this.makeData()
         //get order from local storage
         let order = JSON.parse(localStorage.getItem('order')) 
-        if(data !== undefined){
+        if(data !== undefined && order !== null){
+            this.setState({
+                tablesData:data,
+                reorder: order.reorder
+            })
+        } else if (data !== undefined ) {
             this.setState({
                 tablesData:data,
                 reorder: order.reorder
