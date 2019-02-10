@@ -2,6 +2,7 @@
   "name": "js-test-shymma",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://shymaSane.github.io/test-js",
   "dependencies": {
     "gh-pages": "^2.0.1",
     "match-sorter": "^2.3.0",
@@ -12,6 +13,7 @@
     "react-table": "^6.9.0"
   },
   "scripts": {
+    "deploy": "npm run build&&gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
