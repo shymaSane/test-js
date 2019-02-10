@@ -12,11 +12,13 @@ class Home extends Component {
   }
 
   showModal = () =>{
+    //when click show modal
     let modal = document.getElementById('tables-modal')
     modal.style.display = "block";
   }
 
   closeModal = () =>{
+    //when click close modal
     let modal = document.getElementById('tables-modal')
     let errorMsg = document.getElementById('errors')
     modal.style.display = "none";
@@ -35,10 +37,11 @@ class Home extends Component {
     let title = document.getElementById('title')
 
     if(emails === province){
+      //when client chooses same order:
       errorMsg.style.display = 'block'
       title.style.marginBottom = '20px'
     } else if(emails > province){
-      
+      //when the table default rder change update state
       dispatch({type: "UPDATE_TABLES", payload: true});
       localStorage.setItem('order', JSON.stringify({reorder:true}))
       this.props.history.push('/api/emailtables');
@@ -60,7 +63,8 @@ class Home extends Component {
             <div className="cover-text">
               <div className="text-container">
                   <h4 className="text1">Inspire your data</h4>
-                  <h1 className="text2"><span>W</span>elcome <span>t</span>o <span>S</span>howTables</h1>
+                  <h1 className="text2">Welcome To Show Tables</h1>
+                  <h4 className="text4">Show Tables</h4>
                   <h3 className="text3">Start with us</h3>
               </div>
               <div className="button-container">

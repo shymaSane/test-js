@@ -32,7 +32,7 @@
     margin-top: 60px
 }
 
-.text-container h4, h1, h3{
+.text-container h4, h1, h3, h4{
     text-transform: uppercase 
 }
 
@@ -43,7 +43,7 @@
     white-space: nowrap;
 }
 
-.text2 {
+.text2, .text4 {
     margin: 20px 0px 10px 0px;
     font-size: 36px;
     font-weight: 700;
@@ -51,6 +51,10 @@
     animation: typewriter 3s steps(40) 1s 1 normal both;
     overflow: hidden;
     white-space: nowrap;
+}
+
+.text4 {
+    display: none
 }
 
 .text3 {
@@ -211,3 +215,40 @@
     font-size: 20px;
     margin: 5px;
 }
+
+/* responsive webdesign fr small devices */
+
+@media only screen and (max-width: 700px) {
+    .container {
+        background-image: linear-gradient(rgba(61, 43, 5, 0.6), rgba(0, 0, 0, 0.6)),url(./img/cover2.jpg);
+        display: flex;
+        justify-content: center
+    }
+
+    .cover-text {
+        width: 250px;
+        color: white;
+        height: 100vh;
+        margin: 0px;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        flex-wrap: wrap
+    }
+
+
+    .text1, .text2, .text3{
+        animation: none;
+        text-align: center
+    }
+
+    .text2{
+        display: none
+    }
+
+    .text4 {
+        font-size: 28px;
+        display: block
+    }
+} 

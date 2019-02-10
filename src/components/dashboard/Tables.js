@@ -8,6 +8,7 @@ export default class Tables extends Component {
         <Consumer>
             {value => {
                 const {Allcolumns} = value
+                console.log(Allcolumns)
                 return(
                   <Table columns = {Allcolumns}/>
                 )

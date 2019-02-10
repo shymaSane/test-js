@@ -8,9 +8,9 @@ const Context = React.createContext({})
 const reducer = (state, action) =>{
     switch(action.type){
         case 'UPDATE_TABLES':
+            //to check if order changed on not
             return {
                 ...state,
-                // columns: [...state.columns] = [state.columns[0], state.columns[2], state.columns[1], state.columns[3]]
                 reorder:action.payload
             }
      
@@ -165,7 +165,9 @@ export class Provider extends Component {
     }
 
     componentDidMount () {
+        //get data from the local file 
         let data = this.makeData()
+        //get order from local storage
         let order = JSON.parse(localStorage.getItem('order')) 
         if(data !== undefined){
             this.setState({

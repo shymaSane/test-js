@@ -9,8 +9,11 @@ class EmailTables extends Component {
     return (
         <Consumer>
             {value => {
+                const{reorder, columns, columns1} = value
                 return(
-                  <Table/>
+                    <div>
+                    {reorder === false? <Table columns={columns}/>: <Table columns={columns1}/>}
+                    </div>
                 )
             }}
         </Consumer>
