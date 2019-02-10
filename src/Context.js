@@ -165,24 +165,20 @@ export class Provider extends Component {
     }
 
     componentDidMount () {
+         //get order from local storage
+        let order = JSON.parse(localStorage.getItem('order')) 
+        if(order === null) {
+            order = localStorage.setItem('order', JSON.stringify({reorder:false}))
+        }
         //get data from the local file 
         let data = this.makeData()
-        //get order from local storage
-        let order = JSON.parse(localStorage.getItem('order')) 
+       
         if(data !== undefined && order !== null){
             this.setState({
                 tablesData:data,
                 reorder: order.reorder
             })
-        } else if (data !== undefined ) {
-            this.setState({
-                tablesData:data,
-                // reorder: order.reorder
-            })
         }
-        
-        
-        
     }
     render(){
         
