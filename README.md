@@ -9,6 +9,7 @@ Technologies used:
 3- CSS + CSS anmiation
 4- flexbox 
 5- react router v4
+6- localStorage to save columns order when refresh
 
 What is this project:
 1- home page with two buttons 

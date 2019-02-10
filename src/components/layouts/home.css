@@ -251,4 +251,9 @@
         font-size: 28px;
         display: block
     }
+
+    .modal-content{
+        width: 100%;
+        height: 50%;
+    }
 } 
