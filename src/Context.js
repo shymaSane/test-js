@@ -177,7 +177,7 @@ export class Provider extends Component {
         } else if (data !== undefined ) {
             this.setState({
                 tablesData:data,
-                reorder: order.reorder
+                // reorder: order.reorder
             })
         }
         
