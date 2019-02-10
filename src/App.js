@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Provider} from './Context';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {HashRouter as Router, Route, Switch} from 'react-router-dom';
 import Home from './components/layouts/Home';
 import EmailTables from './components/dashboard/EmailTables';
 import Tables from './components/dashboard/Tables'
@@ -13,7 +13,7 @@ class App extends Component {
         <div className="App">
           <Router>
             <Switch>
-              <Route exact path="/api" component={Home} />
+              <Route exact path="/" component={Home} />
               <Route exact path="/api/emailtables" component={EmailTables} />
               <Route exact path="/api/alltables" component={Tables} />
             </Switch>
